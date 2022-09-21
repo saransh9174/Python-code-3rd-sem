@@ -1,0 +1,34 @@
+import pandas as pd
+###setting path
+p="C:/Users/mpstme.student/Desktop/tv_shows.csv"
+##making dataframe
+df=pd.read_csv(p)
+##showing dataframe
+df
+##Getting info about dataframe
+df.info()
+##describing dataframe
+df.describe()
+###checking for null values
+df.isnull()
+##checking for null values and finding its sum
+df.isnull().sum()
+##setting index
+df.set_index("column name",inpalce=true) ##inplace=true means a permanent change
+##printing columns in df
+df.columns
+##finding type of df
+type(df)
+##alternate syntax  type(df["column name"])
+####Finding head of a specific column
+df["column_name"].head()
+##type of df
+type(df)
+##copying head/tail
+df_copy.tail/head(n)    ##n= number of entitites to copy default prints 5
+##selecting with index
+df.loc[n,column name] ##n=index
+#selecting_+coplumns
+df.iloc[n:] 
+##counting number of times a value appeaars in df
+df["column_name"].value_counts()
