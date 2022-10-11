@@ -101,3 +101,5 @@ df['Status'] = df['Status'].replace({'P': 'A'})
 ##Percentage of a column
 df1['percent'] = (df1['Math_score'] / 
                   df1['Math_score'].sum()) * 100
+##re-indexing after dropping
+df.reset_index() #opt inplace=TRUE
