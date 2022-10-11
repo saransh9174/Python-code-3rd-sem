@@ -98,3 +98,6 @@ df.to_csv('file1.csv')
 #UPDATING VALUE IN COLUMN
 # updating the column value/data
 df['Status'] = df['Status'].replace({'P': 'A'})
+##Percentage of a column
+df1['percent'] = (df1['Math_score'] / 
+                  df1['Math_score'].sum()) * 100
