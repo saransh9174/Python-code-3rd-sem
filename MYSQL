@@ -1,0 +1,103 @@
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="admin",
+  database="mydatabase"
+)
+
+mycursor = mydb.cursor()
+#try:
+ #mycursor.execute("use DATABASE mydatabase")
+
+#except:
+   # mycursor.execute("Create database mydatabase")
+    #print("Database created ")
+
+##Showing tables
+mycursor.execute("show tables")
+for x in mycursor:
+    print(x)
+##creating table
+mycursor.execute("CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))")
+
+#primary key variant
+mycursor.execute("CREATE TABLE customers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))")
+
+#alter table
+mycursor.execute("ALTER TABLE customers ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
+
+#INSERTING
+sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+val = ("John", "Highway 21")
+mycursor.execute(sql, val) #mycursor.executemany(sql,val) for multiple records
+
+mydb.commit()
+print("record inserted, ID:", mycursor.lastrowid) 
+
+#Selecting
+mycursor.execute("SELECT * FROM customers")
+
+myresult = mycursor.fetchall()  #For getting only one row use: mycursor.fetchone()
+
+for x in myresult:
+  print(x)
+
+#Conditions
+sql="select * from customers where address='Park Lane 38'"
+mycursor.execute(sql)
+myresult=mycursor.fetchall()
+
+for x in myresult:
+    print(x)
+
+#DELETE
+sql = "DELETE FROM customers WHERE address = 'Mountain 21'"
+
+mycursor.execute(sql)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record(s) deleted")
+
+#drop only if exists
+sql = "DROP TABLE IF EXISTS customers"
+
+mycursor.execute(sql)
+
+#UPDATING
+sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'"
+
+mycursor.execute(sql)
+
+mydb.commit()
+
+#2ND PLACEHOLDER METHOD
+sql = "UPDATE customers SET address = %s WHERE address = %s"
+val = ("Valley 345", "Canyon 123")
+
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+##HEAD
+mycursor = mydb.cursor()
+
+mycursor.execute("SELECT * FROM customers LIMIT 5")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+
+#STARTING WITH SPECIFIC POSITION
+mycursor = mydb.cursor()
+
+mycursor.execute("SELECT * FROM customers LIMIT 5 OFFSET 2")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
