@@ -120,3 +120,50 @@ details = {
 df = pd.DataFrame(details)
 
 df
+
+##USER_INP DICT
+employees = {}
+
+for i in range(3):
+    name = input("Enter employee's name: ")
+    salary = input("Enter employee's salary: ")
+
+    employees[name] = salary
+    
+
+# 👇️ {'Alice': '100', 'Bob': '100', 'Carl': '100'}
+print(employees)
+
+####################################################3
+# Python3 code to demonstrate
+# Double List
+# using loop
+
+# Initializing list
+test_list = [12, 67, 98, 34, 43]
+
+# printing original list
+print("The original list is : " + str(test_list))
+
+# Double List
+# using loop
+res = []
+for ele in test_list:
+	res.append(ele + ele)
+	
+# printing result
+print ("Double List is : " + str(res))
+
+
+###USING MAP AND LAMBDA
+lis = list(map(lambda x: x*2, lis))
+
+######ZIIIIIIIIIIIP
+
+name = [ "Manjeet", "Nikhil", "Shambhavi", "Astha" ]
+roll_no = [ 4, 1, 3, 2 ]
+ 
+# using zip() to map values
+mapped = zip(name, roll_no)
+ 
+print(set(mapped))
