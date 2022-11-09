@@ -103,3 +103,20 @@ df1['percent'] = (df1['Math_score'] /
                   df1['Math_score'].sum()) * 100
 ##re-indexing after dropping
 df.reset_index() #opt inplace=TRUE
+
+
+##DF from Dict
+# import pandas library
+import pandas as pd
+
+# dictionary with list object in values
+details = {
+	'Name' : ['Ankit', 'Aishwarya', 'Shaurya', 'Shivangi'],
+	'Age' : [23, 21, 22, 21],
+	'University' : ['BHU', 'JNU', 'DU', 'BHU'],
+}
+
+# creating a Dataframe object
+df = pd.DataFrame(details)
+
+df
