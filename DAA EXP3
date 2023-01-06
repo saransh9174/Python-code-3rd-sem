@@ -1,0 +1,14 @@
+p=[280,120,120,100]
+w=[40,24,20,10 ]
+max=60
+res=[]
+for i in range(len(p)):
+    for j in range(len(w)):
+        c=p[i]/w[i]
+        res.append(int (c))
+print(res)
+
+fn = [res[i] for i in range(len(res)) if i == res.index(res[i]) ]
+fn.sort(reverse=True)
+print(fn)
+
